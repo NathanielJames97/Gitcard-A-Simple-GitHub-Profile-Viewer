@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+.App-header {
+  text-align: center;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+.Card {
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  margin-top: 20px;
+  text-align: left;
+  display: inline-block;
+}
+
+.Card img {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.Card p {
+  margin: 5px 0;
+}

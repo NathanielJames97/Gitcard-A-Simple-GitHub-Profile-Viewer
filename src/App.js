@@ -1,22 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [githubName, setGithubName] = useState("");
+  const [data, setData] = useState(null);
+
+  const handleChange = (e) => {
+    setGithubName(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (githubName) {
+      fetch(`https://api.github.com/users/${githubName}`)
+        .then(response => response.json())
+        .then(data => {
+          setData(data);
+        })
+        .catch(error => console.error('Error fetching the GitHub data:', error));
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Gitcard - Turn your GitHub profile into a business card!</h1>
+        <form onSubmit={handleSubmit}>
+          <input 
+            type="text" 
+            placeholder="Enter your GitHub username" 
+            value={githubName} 
+            onChange={handleChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        {data && (
+          <div className="Card">
+            <h2>{data.name}</h2>
+            <img src={data.avatar_url} alt={`${data.name}'s avatar`} width="100" />
+            <p><strong>Username:</strong> {data.login}</p>
+            <p><strong>Bio:</strong> {data.bio}</p>
+            <p><strong>Location:</strong> {data.location}</p>
+            <p><strong>Public Repos:</strong> {data.public_repos}</p>
+            <p><strong>Followers:</strong> {data.followers}</p>
+            <p><strong>Following:</strong> {data.following}</p>
+          </div>
+        )}
       </header>
     </div>
   );
