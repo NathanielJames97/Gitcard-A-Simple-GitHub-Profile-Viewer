@@ -42,3 +42,31 @@ To run this project locally, follow these steps:
 
 ## Project Structure
 
+.
+├── public
+│ ├── index.html
+│ └── ...
+├── src
+│ ├── App.css
+│ ├── App.js
+│ ├── index.css
+│ ├── index.js
+│ └── ...
+├── package.json
+└── README.md
+
+
+- `src/App.js`: Main application component.
+- `src/App.css`: Styles for the application.
+- `public/index.html`: Main HTML file.
+- `package.json`: Project dependencies and scripts.
+
+
+## Acknowledgements
+
+- This project uses the GitHub API to fetch user data.
+- The application is built with [React](https://reactjs.org/).
+
+## Contact
+
+If you have any questions or suggestions, feel free to reach out to [hello@nathaniel-james.co.uk](mailto:hello@nathaniel-james.co.uk).
