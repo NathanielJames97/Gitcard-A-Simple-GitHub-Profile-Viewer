@@ -61,6 +61,9 @@ button {
   margin-top: 20px;
   text-align: left;
   display: inline-block;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
 }
 
 .Card img {
