@@ -1,49 +1,65 @@
+import React, { useState } from 'react';
 import './App.css';
-import { useState, useEffect } from 'react';
 
 function App() {
-  const [githubName, setGithubName] = useState("");
-  const [data, setData] = useState(null);
+  const [username, setUsername] = useState('');
+  const [profileData, setProfileData] = useState(null);
+  const [error, setError] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
 
-  const handleChange = (e) => {
-    setGithubName(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (githubName) {
-      fetch(`https://api.github.com/users/${githubName}`)
-        .then(response => response.json())
-        .then(data => {
-          setData(data);
-        })
-        .catch(error => console.error('Error fetching the GitHub data:', error));
+  const fetchProfileData = async () => {
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      if (!response.ok) {
+        throw new Error('User not found');
+      }
+      const data = await response.json();
+      setProfileData(data);
+      setError('');
+    } catch (err) {
+      setError(err.message);
+      setProfileData(null);
     }
   };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-mode');
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Gitcard - Turn your GitHub profile into a business card!</h1>
         <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            placeholder="Enter your GitHub username" 
-            value={githubName} 
-            onChange={handleChange}
-          />
-          <button type="submit">Submit</button>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter GitHub username"
+        />
+        <button onClick={fetchProfileData} className='uiButton'>Submit</button>
+        <button onClick={toggleDarkMode} className='uiButton'>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
         </form>
-        {data && (
-          <div className="Card">
-            <h2>{data.name}</h2>
-            <img src={data.avatar_url} alt={`${data.name}'s avatar`} width="100" />
-            <p><strong>Username:</strong> {data.login}</p>
-            <p><strong>Bio:</strong> {data.bio}</p>
-            <p><strong>Location:</strong> {data.location}</p>
-            <p><strong>Public Repos:</strong> {data.public_repos}</p>
-            <p><strong>Followers:</strong> {data.followers}</p>
-            <p><strong>Following:</strong> {data.following}</p>
+        {error && <p className="error">{error}</p>}
+        {profileData && (
+          <div className="profile-card">
+            {profileData.avatar_url && <img id='avatarPicture' src={profileData.avatar_url} alt={profileData.name} />}
+            {profileData.name && <h2 id='name'>{profileData.name}</h2>}
+            {profileData.bio && <p>{profileData.bio}</p>}
+            {profileData.location && <p><strong>Location:</strong> {profileData.location}</p>}
+            {profileData.public_repos !== null && <p><strong>Public Repos:</strong> {profileData.public_repos}</p>}
+            {profileData.followers !== null && <p><strong>Followers:</strong> {profileData.followers}</p>}
+            {profileData.following !== null && <p><strong>Following:</strong> {profileData.following}</p>}
+            {profileData.company && <p><strong>Company:</strong> {profileData.company}</p>}
+            {profileData.blog && <p id='blogLink'><strong>Blog:</strong> <a href={profileData.blog}>{profileData.blog}</a></p>}
+            {profileData.email && <p id='emailLink'><strong>Email:</strong> {profileData.email}</p>}
           </div>
         )}
       </header>
