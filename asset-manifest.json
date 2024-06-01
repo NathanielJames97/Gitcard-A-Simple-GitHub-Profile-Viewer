@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gitcard/static/css/main.a43b8b5e.css",
+    "main.js": "/gitcard/static/js/main.8409eab5.js",
+    "static/js/453.ed428b8e.chunk.js": "/gitcard/static/js/453.ed428b8e.chunk.js",
+    "index.html": "/gitcard/index.html",
+    "main.a43b8b5e.css.map": "/gitcard/static/css/main.a43b8b5e.css.map",
+    "main.8409eab5.js.map": "/gitcard/static/js/main.8409eab5.js.map",
+    "453.ed428b8e.chunk.js.map": "/gitcard/static/js/453.ed428b8e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a43b8b5e.css",
+    "static/js/main.8409eab5.js"
+  ]
+}
