@@ -48,11 +48,11 @@ div header button {
 .profile-card {
   background: #fff;
   color: #333;
-  padding: 20px;
+  padding: 25px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: left;
-  max-width: 400px;
+  max-width: 60%;
   margin-top: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -66,6 +66,28 @@ div header button {
   width: 100px;
   border-radius: 50%;
   margin-bottom: 15px;
+}
+
+#blogLink a {
+  color:#61dafb;
+}
+
+#emailLink {
+  color:#61dafb;
+}
+
+#emailLink strong {
+  color:black;
+}
+
+#name {
+  text-align: center;
+}
+
+#avatarPicture {
+  display: flex;
+  margin-left:auto;
+  margin-right: auto;
 }
 
 /* Error Message Styling */
@@ -82,6 +104,10 @@ body.dark-mode .App-header {
 body.dark-mode .profile-card {
   background: #333;
   color: #fff;
+}
+
+body.dark-mode #emailLink strong {
+  color:white;
 }
 
 /* Responsive Design */
