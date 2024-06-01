@@ -27,19 +27,26 @@ function App() {
     document.body.classList.toggle('dark-mode');
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+
   return (
     <div className="App">
       <header className="App-header">
+        <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter GitHub username"
         />
-        <button onClick={fetchProfileData}>Submit</button>
-        <button onClick={toggleDarkMode}>
+        <button onClick={fetchProfileData} className='uiButton'>Submit</button>
+        <button onClick={toggleDarkMode} className='uiButton'>
           {darkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
+        </form>
         {error && <p className="error">{error}</p>}
         {profileData && (
           <div className="profile-card">
