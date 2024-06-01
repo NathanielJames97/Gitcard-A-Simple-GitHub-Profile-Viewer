@@ -40,21 +40,6 @@ To run this project locally, follow these steps:
 2. Enter a GitHub username in the input field.
 3. Click the "Submit" button to fetch and display the user's GitHub profile information.
 
-## Project Structure
-
-.
-├── public
-│ ├── index.html
-│ └── ...
-├── src
-│ ├── App.css
-│ ├── App.js
-│ ├── index.css
-│ ├── index.js
-│ └── ...
-├── package.json
-└── README.md
-
 
 - `src/App.js`: Main application component.
 - `src/App.css`: Styles for the application.
