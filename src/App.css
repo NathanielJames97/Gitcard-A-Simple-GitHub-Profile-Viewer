@@ -1,41 +1,55 @@
-.App-header {
+.App {
   text-align: center;
 }
 
-form {
-  margin: 20px 0;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 input {
   padding: 10px;
-  margin-right: 10px;
+  margin: 10px;
+  font-size: 16px;
 }
 
 button {
   padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.Card {
-  background-color: #282c34;
+.profile-card {
+  background: #fff;
+  color: #333;
   padding: 20px;
-  border-radius: 10px;
-  color: white;
-  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: left;
-  display: inline-block;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.Card img {
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.Card p {
-  margin: 5px 0;
-}
-
-#visualization {
+  max-width: 400px;
   margin-top: 20px;
+}
+
+.profile-card img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.error {
+  color: red;
+}
+
+body.dark-mode .App-header {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .profile-card {
+  background: #333;
+  color: #fff;
 }
