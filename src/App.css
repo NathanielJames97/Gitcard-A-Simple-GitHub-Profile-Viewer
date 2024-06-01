@@ -1,5 +1,7 @@
+/* General Styling */
 .App {
   text-align: center;
+  font-family: 'Arial', sans-serif;
 }
 
 .App-header {
@@ -13,18 +15,36 @@
   color: white;
 }
 
+/* Input and Button Styling */
 input {
   padding: 10px;
   margin: 10px;
   font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
+button:hover {
+  background-color: #21a1f1;
+}
+
+div header button {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Profile Card Styling */
 .profile-card {
   background: #fff;
   color: #333;
@@ -34,17 +54,27 @@ button {
   text-align: left;
   max-width: 400px;
   margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .profile-card img {
   width: 100px;
   border-radius: 50%;
+  margin-bottom: 15px;
 }
 
+/* Error Message Styling */
 .error {
   color: red;
+  margin-top: 10px;
 }
 
+/* Dark Mode Styling */
 body.dark-mode .App-header {
   background-color: #1a1a1a;
 }
@@ -52,4 +82,17 @@ body.dark-mode .App-header {
 body.dark-mode .profile-card {
   background: #333;
   color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .profile-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  input, button {
+    width: 90%;
+    font-size: 14px;
+  }
 }
