@@ -1,5 +1,6 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import * as d3 from 'd3';
 
 function App() {
   const [githubName, setGithubName] = useState("");
@@ -16,9 +17,32 @@ function App() {
         .then(response => response.json())
         .then(data => {
           setData(data);
+          drawVisualization(data);
         })
         .catch(error => console.error('Error fetching the GitHub data:', error));
     }
+  };
+
+  const drawVisualization = (data) => {
+    d3.selectAll("#visualization > *").remove();
+    const svg = d3.select("#visualization")
+      .append("svg")
+      .attr("width", 300)
+      .attr("height", 300);
+
+    const circle = svg.append("circle")
+      .attr("cx", 150)
+      .attr("cy", 150)
+      .attr("r", data.public_repos)
+      .attr("fill", "blue");
+
+    svg.append("text")
+      .attr("x", 150)
+      .attr("y", 150)
+      .attr("text-anchor", "middle")
+      .attr("dy", ".3em")
+      .attr("fill", "white")
+      .text(data.public_repos);
   };
 
   return (
@@ -44,8 +68,14 @@ function App() {
             <p><strong>Public Repos:</strong> {data.public_repos}</p>
             <p><strong>Followers:</strong> {data.followers}</p>
             <p><strong>Following:</strong> {data.following}</p>
+            <div id="visualization"></div>
           </div>
         )}
+
+        <div className="Repo">
+
+          
+        </div>
       </header>
     </div>
   );
